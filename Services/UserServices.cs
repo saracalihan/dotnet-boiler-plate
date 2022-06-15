@@ -9,12 +9,12 @@ using DapperExample.Models;
 
 namespace DapperExample.Services
 {
-    public class UserServices
+    public class UserService
     {
         private SqlConnection connection;
         private AuthenticationService _authService = new AuthenticationService();
 
-        public UserServices()
+        public UserService()
         {
             connection = new SqlConnection("Data Source=LAPTOP-POJ47EP4\\SQLEXPRESS01;" + "Initial Catalog=basic;" + "User id=sa;" + "Password=123456;");
             connection.Open();

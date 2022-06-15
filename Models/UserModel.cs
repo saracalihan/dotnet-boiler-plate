@@ -52,15 +52,5 @@ namespace DapperExample.Models
             password_salt = HashNSalt.salt;
             return true;
         }
-
-        //public User(int id, string name, bool is_admin, DateTime created_at, DateTime updated_at, DateTime delated_at)
-        //{
-        //    this.id = id;
-        //    this.name = name;
-        //    this.is_admin = is_admin;
-        //    this.created_at = created_at;
-        //    this.updated_at = updated_at;
-        //    this.delated_at = delated_at;
-        //}
     }
 }

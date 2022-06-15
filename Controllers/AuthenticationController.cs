@@ -15,7 +15,8 @@ namespace DapperExample.Controllers
     public class AuthenticationController : ControllerBase
     {
         private AuthenticationService _authService = new AuthenticationService();
-        private UserServices _userService= new UserServices();
+        private UserService _userService= new UserService();
+        private TokenService _tokenService= new TokenService();
 
         [HttpPost("/login")]
         public object login(LoginDTO userDTO)
@@ -27,7 +28,8 @@ namespace DapperExample.Controllers
                 throw new Exception("User not found or password is incorrect!");
             }
 
-            return new { user };
+            AccessToken accessToken = _tokenService.generateAccessToken(user.id);
+            return new { user, accessToken };
         }
 
         [HttpPost("/signin")]
@@ -36,7 +38,7 @@ namespace DapperExample.Controllers
             // TODO: Body validation
             if (_userService.isExist(userDTO.name))
             {
-                throw new Exception("user already exist!");
+                throw new Exception("User already exist!");
             }
 
             User user = _userService.createUser(userDTO.name, false, userDTO.password);

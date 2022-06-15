@@ -42,7 +42,7 @@ A basic boilerplate with authentication**, **services**, **repositories** and **
 │   ├── < UseCase >Service.cs
 │   ├── AuthenticationService.cs
 │   ├── DatabaseService.cs
-│   └── UserServices.cs
+│   └── UserService.cs
 ├── Startup.cs
 ├── appsettings.Development.json
 ├── appsettings.json
