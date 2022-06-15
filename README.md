@@ -1,13 +1,13 @@
 # DotNet Boilerplate
-A basic boilerplate with authentication, services, repositories and models for DotNet Core
+A basic boilerplate with authentication**, **services**, **repositories** and **models** for DotNet Core 5.0
 
 ## Table of Contents
 + [Folder Structure](#folder-structure)
 + [Commands](#commands)
-  + [Install](#install)
-  + [Run](#run)
-  + [Run for development](#run-for-development)
-  + [Publish](#publish)
+  - [Install](#install)
+  - [Run](#run)
+  - [Run for development](#run-for-development)
+  - [Publish](#publish)
 + [Contributing](#contributing)
 +[Contributors](#contributors)
 
@@ -23,19 +23,20 @@ cd dotnet-boiler-plate
 
 ### Run
 Run project with dotnet cli or use Visual Studio
-````bash
+```bash
 dotnet run
+
 ```
 
 ### Run for Development
 DotNet CLI can track file or folders and if project has any changes it will hotreload the project
-````bash
+```bash
 dotnet watch run
 ```
 
 ### Publish
 Build to generate executable and DLL's
-````bash
+```bash
 dotnet publish
 ```
 
