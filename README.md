@@ -49,6 +49,7 @@ A basic boilerplate with authentication**, **services**, **repositories** and **
 ├── bin # Executables
 └── obj # Compiled files
 ```
+[Go to table of contents](#table-of-contents) 
 ## Commands
 Install this project then run is as you want.
 ### Install
@@ -77,13 +78,20 @@ Build to generate executable and DLL's
 dotnet publish
 ```
 
+[Go to table of contents](#table-of-contents) 
+
 ## Contributing
 If you want to contribute to the project, please first **check** if the work you are doing is already an **issue**. If there is an issue and there is someone assigned to the issue, **contact that person**. If there is no issue, you can send your development to the project managers by opening a **pull request**. Please read [CONTRIBUTING.md](./CONTRIBUTING.md)
 
+[Go to table of contents](#table-of-contents) 
 ## Contributors
 <a href = "https://github.com/saracalihan/dotnet-boiler-plate/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=saracalihan/dotnet-boiler-plate"/>
 </a>
 
+[Go to table of contents](#table-of-contents) 
+
 ## LICENSE
 [GNU GENERAL PUBLIC LICENSE Version 3](./LICENSE)
+
+[Go to table of contents](#table-of-contents) 
