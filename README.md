@@ -1,4 +1,4 @@
-# DotNet Boilerplate
+﻿# DotNet Boilerplate
 A basic boilerplate with authentication**, **services**, **repositories** and **models** for DotNet Core 5.0
 
 ## Table of Contents
@@ -9,9 +9,46 @@ A basic boilerplate with authentication**, **services**, **repositories** and **
   - [Run for development](#run-for-development)
   - [Publish](#publish)
 + [Contributing](#contributing)
-+[Contributors](#contributors)
++ [Contributors](#contributors)
 
 ## Folder Structure
+
+```bash
+.
+├── Controllers # API endpoints handlers
+│   ├── < Endpoint >Controller.cs
+│   ├── AuthenticationController.cs
+│   └── UsersController.cs
+├── DTOs # Data Transfer Objects for get data from body
+│   ├── < Category >
+│   │   └── < UseCase >DTO.cs
+│   ├── Authentication
+│   │   ├── LoginDTO.cs
+│   │   └── SigninDTO.cs
+│   └── User
+│       ├── CreateUserDTO.cs
+│       └── UpdateUserDTO.cs
+├── DapperExample.csproj
+├── DapperExample.csproj.user
+├── LICENSE # License file
+├── Models
+│   ├── < Entity >Model.cs
+│   └── UserModel.cs
+├── Program.cs # Projects start point
+├── Properties
+│   └── launchSettings.json
+├── README.md
+├── Services # Entity's business logic's
+│   ├── < UseCase >Service.cs
+│   ├── AuthenticationService.cs
+│   ├── DatabaseService.cs
+│   └── UserServices.cs
+├── Startup.cs
+├── appsettings.Development.json
+├── appsettings.json
+├── bin # Executables
+└── obj # Compiled files
+```
 ## Commands
 Install this project then run is as you want.
 ### Install
