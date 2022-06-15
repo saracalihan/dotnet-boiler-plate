@@ -30,7 +30,7 @@ A basic boilerplate with authentication**, **services**, **repositories** and **
 │       └── UpdateUserDTO.cs
 ├── DapperExample.csproj
 ├── DapperExample.csproj.user
-├── LICENSE # License file
+├── LICENSE # Lic
 ├── Models
 │   ├── < Entity >Model.cs
 │   └── UserModel.cs

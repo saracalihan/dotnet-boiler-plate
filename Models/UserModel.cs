@@ -46,7 +46,8 @@ namespace DapperExample.Models
 
         private bool setPasswordHashNSalt(string password)
         {
-            dynamic HashNSalt = AuthenticationService.generateSaltAndPassword(password);
+            AuthenticationService _authService = new AuthenticationService();
+            HashAndSalt HashNSalt = _authService.generateSaltAndHash(password);
             password_hash = HashNSalt.hash;
             password_salt = HashNSalt.salt;
             return true;

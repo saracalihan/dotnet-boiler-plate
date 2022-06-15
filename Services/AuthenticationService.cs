@@ -2,22 +2,41 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
+using DapperExample.Models;
 
 namespace DapperExample.Services
 {
-    public static class AuthenticationService
+    public class HashAndSalt
     {
-        static byte[] generateSalt() {
+        public string hash {get;set;}
+        public string salt {get;set; }
+    
+        public HashAndSalt(string hash, byte[] salt)
+        {
+            this.hash = hash;
+            this.salt = Convert.ToBase64String(salt);
+        }
+        public HashAndSalt(string hash, string salt)
+        {
+            this.hash = hash;
+            this.salt = salt;
+        }
+    }
+    public class AuthenticationService
+    {
+        private HashAlgorithm algorithm = new SHA256Managed();
+        
+        byte[] generateSalt() {
             var bytes = new byte[128 / 8];
             var rng = new RNGCryptoServiceProvider();
             rng.GetBytes(bytes);
             return bytes;
         }
-        static string hashPassword(string password, byte[] salt)
+        string hashPassword(string password, byte[] salt)
         {
            byte[] passwordBytes = System.Text.Encoding.UTF8.GetBytes(password);
-            HashAlgorithm algorithm = new SHA256Managed();
 
             byte[] plainTextWithSaltBytes =
               new byte[passwordBytes.Length + salt.Length];
@@ -34,18 +53,18 @@ namespace DapperExample.Services
             return Convert.ToBase64String(algorithm.ComputeHash(plainTextWithSaltBytes));
         }
 
-        public static Object generateSaltAndPassword(string password)
+        public HashAndSalt generateSaltAndHash(string password)
         {
+
             byte[] salt = generateSalt();
             string hash = hashPassword(password, salt);
-            return new { 
-                hash,
-                salt = Convert.ToBase64String(salt)
-            };
+            return new HashAndSalt(hash, salt);
         }
-        public static bool authenticatePassword(string password, string hash, string salt)
+        public bool authenticatePassword(string password, string hash, string salt)
         {
-            string hashedPassword = "";
+            //Decode salt and convert to byte
+            byte[] data = Convert.FromBase64String(salt);
+            string hashedPassword = hashPassword(password, data);
             if(hashedPassword != hash)
             {
                 return false;

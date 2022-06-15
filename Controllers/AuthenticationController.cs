@@ -14,24 +14,33 @@ namespace DapperExample.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
+        private AuthenticationService _authService = new AuthenticationService();
+        private UserServices _userService= new UserServices();
+
         [HttpPost("/login")]
-        public Object login(LoginDTO userDTO)
+        public object login(LoginDTO userDTO)
         {
-            if (UserServices.isExist(userDTO.name))
+
+            User user = _userService.getUserByUsername(userDTO.name);
+            if (!_authService.authenticatePassword(userDTO.password, user.password_hash, user.password_salt))
+            {
+                throw new Exception("User not found or password is incorrect!");
+            }
+
+            return new { user };
+        }
+
+        [HttpPost("/signin")]
+        public User signin(SigninDTO userDTO)
+        {
+            // TODO: Body validation
+            if (_userService.isExist(userDTO.name))
             {
                 throw new Exception("user already exist!");
             }
-            var HashNSalt = AuthenticationService.generateSaltAndPassword(userDTO.password);
 
-            // TODO: userDTO içindekilerle birlikte HashNSalt veritabanına kaydedilecek ve kaydı user tipine çevirip kullanıcıya güvenli şekilde dönecek
-            // userservice içindeki createuser kullanılıp ardından şifre oluşturulmalı ve kullanıcıya o kayıt dönülmeli
-            return HashNSalt;
-        }
-        
-        [HttpPost("/signin")]
-        public void signin(SigninDTO userDTO)
-        {
-
+            User user = _userService.createUser(userDTO.name, false, userDTO.password);
+            return user;
         }
     }
 }
